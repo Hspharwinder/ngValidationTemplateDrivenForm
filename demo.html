@@ -1,0 +1,17 @@
+ <form #AddBlogForm="ngForm" (submit)="createBlog(AddBlogForm)">
+  <ck-editor name="sbody" #sbody="ngModel"
+    [(ngModel)]="modelblog.sbody" required skin="moono-lisa" maxlength="255" language="es" [fullPage]="true">
+  </ck-editor>
+  <div *ngIf="sbody.errors" class="text-danger">
+    Body maximum length is : {{sbody.errors.maxlength.requiredLength | json}} character
+    <br>
+    ActualLength is : {{sbody.errors.maxlength.actualLength | json}} character <br>
+    Please remove :
+    {{sbody.errors.maxlength.actualLength - sbody.errors.maxlength.requiredLength | json}}
+    character <br>
+  </div>  
+   {{AddBlogForm.value | json}}
+   {{body.errors | json}}
+ </form>
+
+ 
